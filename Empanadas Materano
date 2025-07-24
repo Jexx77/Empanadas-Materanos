@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delicias de Empanadas</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Satisfy&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #FFF9EA;
+            overflow-x: hidden;
+        }
+        
+        .cursive {
+            font-family: 'Satisfy', cursive;
+        }
+        
+        .slide-in-left {
+            animation: slideInLeft 0.8s ease-out forwards;
+            opacity: 0;
+            transform: translateX(-100px);
+        }
+        
+        .slide-in-right {
+            animation: slideInRight 0.8s ease-out forwards;
+            opacity: 0;
+            transform: translateX(100px);
+        }
+        
+        .fade-in {
+            animation: fadeIn 1s ease-out forwards;
+            opacity: 0;
+        }
+        
+        @keyframes slideInLeft {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        @keyframes slideInRight {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+        
+        .empanada-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .empanada-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .slider-container {
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .slider {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+        
+        .slide {
+            min-width: 100%;
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: #F59E0B;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="bg-amber-500 text-white shadow-lg">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center">
+                <div class="text-3xl mr-2">🥟</div>
+                <h1 class="text-2xl font-bold cursive">Delicias de Empanadas</h1>
+            </div>
+            <nav class="hidden md:block">
+                <ul class="flex space-x-6">
+                    <li><a href="#inicio" class="nav-link font-medium">Inicio</a></li>
+                    <li><a href="#menu" class="nav-link font-medium">Menú</a></li>
+                    <li><a href="#nosotros" class="nav-link font-medium">Nosotros</a></li>
+                    <li><a href="#contacto" class="nav-link font-medium">Contacto</a></li>
+                </ul>
+            </nav>
+            <button class="md:hidden text-2xl">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="relative bg-amber-100 py-16 overflow-hidden">
+        <div class="container mx-auto px-4 flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 mb-10 md:mb-0">
+                <h2 class="text-4xl md:text-5xl font-bold text-amber-800 mb-4 slide-in-left" style="animation-delay: 0.2s">Las Mejores Empanadas Artesanales</h2>
+                <p class="text-lg text-amber-700 mb-6 slide-in-left" style="animation-delay: 0.4s">Sabores auténticos hechos con ingredientes frescos y recetas tradicionales que te transportarán a casa.</p>
+                <div class="flex space-x-4 slide-in-left" style="animation-delay: 0.6s">
+                    <button class="bg-amber-500 hover:bg-amber-600 text-white font-bold py-3 px-6 rounded-full transition duration-300 shadow-lg">
+                        Ver Menú
+                    </button>
+                    <button class="bg-white hover:bg-gray-100 text-amber-500 font-bold py-3 px-6 rounded-full border-2 border-amber-500 transition duration-300 shadow-lg">
+                        Ordenar Ahora
+                    </button>
+                </div>
+            </div>
+            <div class="md:w-1/2 slide-in-right" style="animation-delay: 0.4s">
+                <div class="relative">
+                    <svg class="w-full h-auto" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+                        <ellipse cx="200" cy="150" rx="180" ry="130" fill="#F8B64C" />
+                        <path d="M320,150 C320,205.228 266.274,250 200,250 C133.726,250 80,205.228 80,150 C80,94.772 133.726,50 200,50 C266.274,50 320,94.772 320,150 Z" fill="#E2A336" />
+                        <path d="M300,150 C300,194.183 255.228,230 200,230 C144.772,230 100,194.183 100,150 C100,105.817 144.772,70 200,70 C255.228,70 300,105.817 300,150 Z" fill="#D4973C" />
+                        <path d="M280,150 C280,183.137 244.183,210 200,210 C155.817,210 120,183.137 120,150 C120,116.863 155.817,90 200,90 C244.183,90 280,116.863 280,150 Z" fill="#C68C35" />
+                        <path d="M260,150 C260,172.091 233.137,190 200,190 C166.863,190 140,172.091 140,150 C140,127.909 166.863,110 200,110 C233.137,110 260,127.909 260,150 Z" fill="#B8802E" />
+                        <path d="M240,150 C240,161.046 222.091,170 200,170 C177.909,170 160,161.046 160,150 C160,138.954 177.909,130 200,130 C222.091,130 240,138.954 240,150 Z" fill="#A97528" />
+                        <path d="M220,150 C220,155.523 211.046,160 200,160 C188.954,160 180,155.523 180,150 C180,144.477 188.954,140 200,140 C211.046,140 220,144.477 220,150 Z" fill="#9A6A22" />
+                        <path d="M80,150 C80,150 120,130 160,140 C200,150 240,170 280,160 C320,150 320,150 320,150" stroke="#8B5E1B" stroke-width="2" fill="none" />
+                        <circle cx="140" cy="145" r="5" fill="#8B5E1B" />
+                        <circle cx="180" cy="155" r="5" fill="#8B5E1B" />
+                        <circle cx="220" cy="145" r="5" fill="#8B5E1B" />
+                        <circle cx="260" cy="155" r="5" fill="#8B5E1B" />
+                    </svg>
+                    <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center text-white">
+                        <span class="text-4xl font-bold">🥟</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="absolute -bottom-10 left-0 right-0">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 120">
+                <path fill="#FFF9EA" fill-opacity="1" d="M0,64L80,69.3C160,75,320,85,480,80C640,75,800,53,960,48C1120,43,1280,53,1360,58.7L1440,64L1440,120L1360,120C1280,120,1120,120,960,120C800,120,640,120,480,120C320,120,160,120,80,120L0,120Z"></path>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Featured Products Slider -->
+    <section class="py-16">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-amber-800 mb-2 fade-in">Nuestras Especialidades</h2>
+            <p class="text-center text-amber-600 mb-10 fade-in">Desliza para descubrir nuestros sabores más populares</p>
+            
+            <div class="slider-container">
+                <div class="slider" id="empanada-slider">
+                    <!-- Slide 1 -->
+                    <div class="slide px-4">
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                            <div class="empanada-card bg-white rounded-xl overflow-hidden shadow-lg">
+                                <div class="h-48 bg-amber-200 flex items-center justify-center">
+                                    <div class="text-6xl">🥩</div>
+                                </div>
+                                <div class="p-6">
+                                    <h3 class="text-xl font-bold text-amber-800 mb-2">Carne Tradicional</h3>
+                                    <p class="text-amber-600 mb-4">Jugosa carne molida con aceitunas, huevo duro y especias tradicionales.</p>
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-lg font-bold text-amber-500">$2.50</span>
+                                        <button class="bg-amber-500 hover:bg-amber-600 text-white px-4 py-2 rounded-lg transition">Agregar</button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="empanada-card bg-white rounded-xl overflow-hidden shadow-lg">
+                                <div class="h-48 bg-amber-200 flex items-center justify-center">
+                                    <div class="text-6xl">🧀</div>
+                                </div>
+                                <div class="p-6">
+                                    <h3 class="text-xl font-bold text-amber-800 mb-2">Queso y Cebolla</h3>
+                                    <p class="text-amber-600 mb-4">Mezcla cremosa de quesos con cebolla caramelizada y un toque de orégano.</p>
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-lg font-bold text-amber-500">$2.25</span>
+                                        <button class="bg-amber-500 hover:bg-amber-600 text-white px-4 py-2 rounded-lg transition">Agregar</button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="empanada-card bg-white rounded-xl overflow-hidden shadow-lg">
+                                <div class="h-48 bg-amber-200 flex items-center justify-center">
+                                    <div class="text-6xl">🍗</div>
+                                </div>
+                                <div class="p-6">
+                                    <h3 class="text-xl font-bold text-amber-800 mb-2">Pollo al Curry</h3>
+                                    <p class="text-amber-600 mb-4">Pollo desmenuzado con salsa de curry, coco y un toque de cilantro fresco.</p>
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-lg font-bold text-amber-500">$2.75</span>
+                                        <button class="bg-amber-500 hover:bg-amber-600 text-white px-4 py-2 rounded-lg transition">Agregar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Slide 2 -->
+                    <div class="slide px-4">
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                            <div class="empanada-card bg-white rounded-xl overflow-hidden shadow-lg">
+                                <div class="h-48 bg-amber-200 flex items-center justify-center">
+                                    <div class="text-6xl">🍄</div>
+                                </div>
+                                <div class="p-6">
+                                    <h3 class="text-xl font-bold text-amber-800 mb-2">Champiñones</h3>
+                                    <p class="text-amber-600 mb-4">Champiñones salteados con ajo, tomillo y queso crema para un sabor intenso.</p>
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-lg font-bold text-amber-500">$2.50</span>
+                                        <button class="bg-amber-500 hover:bg-amber-600 text-white px-4 py-2 rounded-lg transition">Agregar</button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="empanada-card bg-white rounded-xl overflow-hidden shadow-lg">
+                                <div class="h-48 bg-amber-200 flex items-center justify-center">
+                                    <div class="text-6xl">🌶️</div>
+                                </div>
+                                <div class="p-6">
+                                    <h3 class="text-xl font-bold text-amber-800 mb-2">Picante Especial</h3>
+                                    <p class="text-amber-600 mb-4">Carne picada con jalapeños, pimientos y nuestra salsa secreta picante.</p>
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-lg font-bold text-amber-500">$2.75</span>
+                                        <button class="bg-amber-500 hover:bg-amber-600 text-white px-4 py-2 rounded-lg transition">Agregar</button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="empanada-card bg-white rounded-xl overflow-hidden shadow-lg">
+                                <div class="h-48 bg-amber-200 flex items-center justify-center">
+                                    <div class="text-6xl">🍎</div>
+                                </div>
+                                <div class="p-6">
+                                    <h3 class="text-xl font-bold text-amber-800 mb-2">Manzana y Canela</h3>
+                                    <p class="text-amber-600 mb-4">Empanada dulce con manzanas caramelizadas, canela y un toque de vainilla.</p>
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-lg font-bold text-amber-500">$3.00</span>
+                                        <button class="bg-amber-500 hover:bg-amber-600 text-white px-4 py-2 rounded-lg transition">Agregar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="flex justify-center mt-8 space-x-4">
+                    <button id="prev-btn" class="bg-amber-500 hover:bg-amber-600 text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg transition">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button id="next-btn" class="bg-amber-500 hover:bg-amber-600 text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg transition">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Us -->
+    <section id="nosotros" class="py-16 bg-amber-50">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0 slide-in-left" id="about-image">
+                    <div class="relative">
+                        <div class="w-64 h-64 md:w-80 md:h-80 mx-auto bg-amber-300 rounded-full flex items-center justify-center">
+                            <div class="text-8xl">👨‍🍳</div>
+                        </div>
+                        <div class="absolute -bottom-5 -right-5 w-32 h-32 bg-amber-500 rounded-full flex items-center justify-center text-white text-5xl">
+                            🥟
+                        </div>
+                    </div>
+                </div>
+                <div class="md:w-1/2 md:pl-10 slide-in-right" id="about-text">
+                    <h2 class="text-3xl font-bold text-amber-800 mb-6">Nuestra Historia</h2>
+                    <p class="text-amber-700 mb-4">Desde 1995, Delicias de Empanadas ha estado sirviendo las empanadas más auténticas y sabrosas de la ciudad. Lo que comenzó como un pequeño negocio familiar se ha convertido en un referente de la gastronomía local.</p>
+                    <p class="text-amber-700 mb-6">Nuestro secreto está en las recetas tradicionales transmitidas por generaciones y en la selección de los mejores ingredientes frescos para cada una de nuestras creaciones.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="bg-amber-500 hover:bg-amber-600 text-white font-medium py-2 px-6 rounded-lg transition shadow-md">
+                            Conoce más
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-16">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-amber-800 mb-2 fade-in">Lo Que Dicen Nuestros Clientes</h2>
+            <p class="text-center text-amber-600 mb-10 fade-in">Opiniones de quienes han probado nuestras empanadas</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white p-6 rounded-xl shadow-lg fade-in" style="animation-delay: 0.2s">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-amber-200 rounded-full flex items-center justify-center mr-4">
+                            <span class="text-xl">👩</span>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-amber-800">María González</h4>
+                            <div class="text-amber-500">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-amber-700">"Las mejores empanadas que he probado en mi vida. La masa es perfecta y los rellenos son increíblemente sabrosos. Mi favorita es la de carne tradicional."</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-xl shadow-lg fade-in" style="animation-delay: 0.4s">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-amber-200 rounded-full flex items-center justify-center mr-4">
+                            <span class="text-xl">👨</span>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-amber-800">Carlos Rodríguez</h4>
+                            <div class="text-amber-500">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-amber-700">"Siempre pido una docena para llevar a casa. La variedad es excelente y el servicio es muy amable. Las empanadas de pollo al curry son una delicia."</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-xl shadow-lg fade-in" style="animation-delay: 0.6s">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-amber-200 rounded-full flex items-center justify-center mr-4">
+                            <span class="text-xl">👩‍🦰</span>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-amber-800">Laura Méndez</h4>
+                            <div class="text-amber-500">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-amber-700">"¡No puedo resistirme a las empanadas dulces! La de manzana y canela es mi postre favorito. Además, el local siempre está limpio y el ambiente es muy acogedor."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contacto" class="py-16 bg-amber-100">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-amber-800 mb-2 fade-in">Contáctanos</h2>
+            <p class="text-center text-amber-600 mb-10 fade-in">¿Tienes preguntas o quieres hacer un pedido grande? ¡Escríbenos!</p>
+            
+            <div class="flex flex-col md:flex-row">
+                <div class="md:w-1/2 mb-8 md:mb-0 md:pr-8 slide-in-left" id="contact-info">
+                    <div class="bg-white p-6 rounded-xl shadow-lg h-full">
+                        <h3 class="text-xl font-bold text-amber-800 mb-4">Información de Contacto</h3>
+                        
+                        <div class="flex items-center mb-4">
+                            <div class="w-10 h-10 bg-amber-500 text-white rounded-full flex items-center justify-center mr-4">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <p class="text-amber-700">Av. Principal 123, Ciudad</p>
+                        </div>
+                        
+                        <div class="flex items-center mb-4">
+                            <div class="w-10 h-10 bg-amber-500 text-white rounded-full flex items-center justify-center mr-4">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <p class="text-amber-700">+123 456 7890</p>
+                        </div>
+                        
+                        <div class="flex items-center mb-4">
+                            <div class="w-10 h-10 bg-amber-500 text-white rounded-full flex items-center justify-center mr-4">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <p class="text-amber-700">info@deliciasdeempanadas.com</p>
+                        </div>
+                        
+                        <div class="flex items-center">
+                            <div class="w-10 h-10 bg-amber-500 text-white rounded-full flex items-center justify-center mr-4">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div>
+                                <p class="text-amber-700">Lun - Vie: 10:00 - 21:00</p>
+                                <p class="text-amber-700">Sáb - Dom: 11:00 - 22:00</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="md:w-1/2 slide-in-right" id="contact-form">
+                    <div class="bg-white p-6 rounded-xl shadow-lg">
+                        <h3 class="text-xl font-bold text-amber-800 mb-4">Envíanos un Mensaje</h3>
+                        
+                        <form class="space-y-4">
+                            <div>
+                                <label class="block text-amber-700 mb-2" for="name">Nombre</label>
+                                <input type="text" id="name" class="w-full px-4 py-2 border border-amber-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500">
+                            </div>
+                            
+                            <div>
+                                <label class="block text-amber-700 mb-2" for="email">Correo Electrónico</label>
+                                <input type="email" id="email" class="w-full px-4 py-2 border border-amber-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500">
+                            </div>
+                            
+                            <div>
+                                <label class="block text-amber-700 mb-2" for="message">Mensaje</label>
+                                <textarea id="message" rows="4" class="w-full px-4 py-2 border border-amber-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500"></textarea>
+                            </div>
+                            
+                            <button type="submit" class="bg-amber-500 hover:bg-amber-600 text-white font-bold py-3 px-6 rounded-lg transition shadow-lg w-full">
+                                Enviar Mensaje
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-amber-800 text-white py-10">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between">
+                <div class="mb-6 md:mb-0">
+                    <div class="flex items-center">
+                        <div class="text-3xl mr-2">🥟</div>
+                        <h2 class="text-2xl font-bold cursive">Delicias de Empanadas</h2>
+                    </div>
+                    <p class="mt-2 text-amber-200">Sabores que te transportan a casa</p>
+                </div>
+                
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-8">
+                    <div>
+                        <h3 class="text-lg font-bold mb-4">Enlaces</h3>
+                        <ul class="space-y-2">
+                            <li><a href="#inicio" class="text-amber-200 hover:text-white transition">Inicio</a></li>
+                            <li><a href="#menu" class="text-amber-200 hover:text-white transition">Menú</a></li>
+                            <li><a href="#nosotros" class="text-amber-200 hover:text-white transition">Nosotros</a></li>
+                            <li><a href="#contacto" class="text-amber-200 hover:text-white transition">Contacto</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-lg font-bold mb-4">Síguenos</h3>
+                        <div class="flex space-x-4">
+                            <a href="#" class="text-amber-200 hover:text-white transition text-xl">
+                                <i class="fab fa-facebook"></i>
+                            </a>
+                            <a href="#" class="text-amber-200 hover:text-white transition text-xl">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="#" class="text-amber-200 hover:text-white transition text-xl">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="col-span-2 md:col-span-1">
+                        <h3 class="text-lg font-bold mb-4">Boletín</h3>
+                        <p class="text-amber-200 mb-2">Suscríbete para recibir ofertas especiales</p>
+                        <div class="flex">
+                            <input type="email" placeholder="Tu email" class="px-4 py-2 rounded-l-lg focus:outline-none text-amber-800 w-full">
+                            <button class="bg-amber-500 hover:bg-amber-600 text-white px-4 py-2 rounded-r-lg transition">
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-amber-700 mt-8 pt-8 text-center text-amber-200">
+                <p>&copy; 2023 Delicias de Empanadas. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Slider functionality
+        const slider = document.getElementById('empanada-slider');
+        const slides = document.querySelectorAll('.slide');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        let currentSlide = 0;
+        
+        function updateSlider() {
+            slider.style.transform = `translateX(-${currentSlide * 100}%)`;
+        }
+        
+        prevBtn.addEventListener('click', () => {
+            currentSlide = (currentSlide === 0) ? slides.length - 1 : currentSlide - 1;
+            updateSlider();
+        });
+        
+        nextBtn.addEventListener('click', () => {
+            currentSlide = (currentSlide === slides.length - 1) ? 0 : currentSlide + 1;
+            updateSlider();
+        });
+        
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    if (entry.target.id === 'about-image') {
+                        entry.target.classList.add('slide-in-left');
+                    } else if (entry.target.id === 'about-text') {
+                        entry.target.classList.add('slide-in-right');
+                    } else if (entry.target.id === 'contact-info') {
+                        entry.target.classList.add('slide-in-left');
+                    } else if (entry.target.id === 'contact-form') {
+                        entry.target.classList.add('slide-in-right');
+                    }
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+        
+        document.querySelectorAll('#about-image, #about-text, #contact-info, #contact-form').forEach(el => {
+            el.classList.remove('slide-in-left', 'slide-in-right');
+            observer.observe(el);
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Form submission (demo)
+        const contactForm = document.querySelector('form');
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const name = document.getElementById('name').value;
+                alert(`¡Gracias ${name}! Tu mensaje ha sido enviado. Te contactaremos pronto.`);
+                contactForm.reset();
+            });
+        }
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'96468282f628337d',t:'MTc1MzM5MjUzMy4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
